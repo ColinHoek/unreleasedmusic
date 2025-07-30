@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unreleased Music – Colin Hook</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #fff;
+      padding: 2rem;
+    }
+    .track {
+      margin-bottom: 30px;
+      background-color: #1e1e1e;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    iframe {
+      width: 100%;
+      height: 166px;
+      border: none;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .seed-info {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 2rem;
+    }
+    .note {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      background-color: #2a2a2a;
+      color: #ccc;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Private Unreleased Tracks by. Colin Hook</h1>
+  <div style="margin-bottom: 40px; text-align: left; font-size: 1.5rem; color: #aaa;">
+  <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="30" height="30" fill="#aaa" viewBox="0 0 24 24"><path d="M2 4h20v16H2V4zm2 2v.01L12 13 20 6.01V6H4z"/></svg>
+  <a href="mailto:colinhookmusic@gmail.com" style="color: #aaa; text-decoration: none; margin-left: 6px; font-weight: bold;">colinhookmusic@gmail.com</a>
+</div>
+  <div class="seed-info" id="seedInfo"></div>
+  <div id="tracks"></div>
+
+  <script>
+    // Your classic player SoundCloud track URLs with notes
+    const trackUrls = [
+      {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2139137712%3Fsecret_token%3Ds-fTeO8ssIPcr&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+        tracktitle: "Colin Hook - Need Your Touch",
+		note: ""
+      },
+      {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2139099447%3Fsecret_token%3Ds-wtRVsZIauLy&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+        tracktitle: "Colin Hook - Into You",
+		note: ""
+      },
+      {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2139098562%3Fsecret_token%3Ds-frwLJkDTh3F&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+        tracktitle: "Colin Hook - Pretty Liar",
+		note: ""
+      },
+	  {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2139098028%3Fsecret_token%3Ds-qbo6Aa0AN32&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+        tracktitle: "Colin Hook - Your Love is Taking Me Home",
+		note: ""
+      },
+      {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2139097269%3Fsecret_token%3Ds-u3Ve85RJYbZ&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+        tracktitle: "Colin Hook - All Night",
+		note: ""
+      },
+      {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2139074448%3Fsecret_token%3Ds-12bCQ5fwnBL&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+        tracktitle: "Colin Hook - Do I Belong",
+		note: ""
+      },
+	  {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2132009337%3Fsecret_token%3Ds-09hkcrK4FJu&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+        tracktitle: "Colin Hook - Comfort In Blame",
+		note: ""
+      },
+	  {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1753247658%3Fsecret_token%3Ds-qshgk0dlTox&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+		tracktitle: "Colin Hook - Hidin' Away",
+        note: ""
+      },
+	  {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1753231929%3Fsecret_token%3Ds-9H6r4NtYboO&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+		tracktitle: "Colin Hook - Go Home",
+        note: ""
+      },
+	  {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1753229427%3Fsecret_token%3Ds-M9nhOH3jcu6&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+		tracktitle: "Colin Hook - In Love With You",
+        note: ""
+      },
+	//  {
+     //   url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1756820001%3Fsecret_token%3Ds-X0YujSIsJhn&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+		//tracktitle: "Colin Hook - Feel The Drive",
+      //  note: ""
+     // },
+	 // {
+     //   url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1756812210%3Fsecret_token%3Ds-qMuxGzidJWn&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+	//	tracktitle: "Colin Hook - In The Water",
+     //   note: ""
+     // },
+	//  {
+    //    url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1756809714%3Fsecret_token%3Ds-dQq86FrjpJb&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+	//	tracktitle: "Colin Hook - What I Want",
+     //   note: ""
+      // },
+	  {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1756800711%3Fsecret_token%3Ds-1Op3wToh2dV&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+		tracktitle: "Colin Hook - I Make You Feel Good",
+        note: ""
+      },
+	  {
+        url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1756798944%3Fsecret_token%3Ds-HLecBX1LwaE&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+		tracktitle: "Colin Hook - I'm Coming Back",
+        note: ""
+      }
+    ];
+
+    // Seeded random shuffle
+    function seededRandom(seed) {
+      let x = Math.sin(seed++) * 10000;
+      return x - Math.floor(x);
+    }
+
+    function shuffle(array, seed) {
+      let arr = array.slice();
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(seededRandom(seed + i) * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    // Get seed from URL or generate one
+    const params = new URLSearchParams(window.location.search);
+    const seed = parseInt(params.get("seed")) || Math.floor(Math.random() * 100000);
+    document.getElementById("seedInfo").innerHTML = `<div class="note"><span style="color: #888; font-weight: bold;">Track Order Seed:</span> ${seed}</div>`;
+
+    // Shuffle and render
+    const shuffled = shuffle(trackUrls, seed);
+    const container = document.getElementById("tracks");
+
+    shuffled.forEach(track => {
+      const div = document.createElement("div");
+      div.className = "track";
+
+      // Add iframe
+      let innerHTML = `<iframe allow="autoplay" scrolling="no" frameborder="no" src="${track.url}"></iframe>`;
+
+      // Add note if exists
+      if (track.note && track.note.trim() !== "") {
+        innerHTML += `<div class="note"><span style="color: #888; font-weight: bold;">Note:</span> ${track.note}</div>`;
+      }
+
+      div.innerHTML = innerHTML;
+      container.appendChild(div);
+    });
+  </script>
+
+</body>
+</html>
